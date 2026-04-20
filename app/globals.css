@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-sand bg-glow text-ink antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b7c6d5 transparent;
+}
+
+::selection {
+  background: rgba(29, 91, 79, 0.18);
+}
+
+@layer utilities {
+  @media (hover: hover) and (pointer: fine) {
+    .peripheral-ui {
+      filter: blur(7px) saturate(0.88);
+      opacity: 0.34;
+      transform: translateY(2px) scale(0.992);
+      transition:
+        filter 220ms ease,
+        opacity 220ms ease,
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+      will-change: filter, opacity, transform;
+    }
+
+    .peripheral-ui:hover,
+    .peripheral-ui:focus-within,
+    .peripheral-ui[data-active="true"] {
+      filter: blur(0);
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
